@@ -3,7 +3,6 @@ import java.util.*;
 public class Main
 {
 	static ArrayList <Quiz> QuizQuestions = new ArrayList <Quiz>();
-	static ArrayList <UniqueNumber> NotRepeated = new ArrayList <UniqueNumber>();
 	static int numberOfQuestions;
 	static int questionsRight;
 	
@@ -29,6 +28,7 @@ public class Main
 			QuizQuestions.add(new Quiz(question, answer));
 			System.out.println();
 		}
+		System.out.println(QuizQuestions.size());
 		quiz();
 	}
 	
@@ -46,10 +46,7 @@ public class Main
 		{
 			int randomNumber = (int) (Math.random()*QuizQuestions.size());
 			
-			if (!NotRepeated.contains(randomNumber))
-			{
 				System.out.println();
-				NotRepeated.add(new UniqueNumber(randomNumber));
 				System.out.println((i + 1)+ ". " + QuizQuestions.get(randomNumber).getQuestion());
 				String answer = in.nextLine();
 						
@@ -58,12 +55,6 @@ public class Main
 					questionsRight = questionsRight + 1;
 				}
 				QuizQuestions.remove(randomNumber);
-			}
-				 
-			else
-			{
-				i = i - 1;
-			}
 		}		
 		score();
 	}
