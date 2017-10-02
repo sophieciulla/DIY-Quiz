@@ -15,11 +15,11 @@ public class Main
 	public static void createQuiz()
 	{
 		Scanner in = new Scanner(System.in);
-		System.out.println("How many Questions do you want on your quiz");
-		numberOfQuestions = in.nextInt();
+		System.out.println("How many total flashcards do you want?");
+		int allQuestions = in.nextInt();
 		System.out.println();
 		
-		for (int i = 0; i < numberOfQuestions; i++)
+		for (int i = 0; i < allQuestions; i++)
 		{
 			Scanner QandA = new Scanner(System.in);
 			System.out.println("What question do you want for question number " + (i + 1) + "?");
@@ -29,23 +29,26 @@ public class Main
 			QuizQuestions.add(new Quiz(question, answer));
 			System.out.println();
 		}
-		
-		System.out.println("Now that you are done filling out the test....here we goooooooo!");
-		System.out.println();
 		quiz();
 	}
 	
 	public static void quiz()
 	{
+		Scanner in = new Scanner(System.in);
+		System.out.println("How many of those questions do you want to be tested on?");
+		numberOfQuestions = in.nextInt();
+		System.out.println("Here we goooooooo!");
+		System.out.println();
 		System.out.println("_____________________________________________________________________________");
 		questionsRight = 0;
-		for (int i = 0; i < numberOfQuestions; i++)
+		
+		for (int i = 0; i < QuizQuestions.size(); i++)
 		{
-			Scanner in = new Scanner(System.in);
-			int randomNumber = (int) (Math.random()*numberOfQuestions) + 1;
+			int randomNumber = (int) (Math.random()*QuizQuestions.size());
 			
 			if (!NotRepeated.contains(randomNumber))
 			{
+				System.out.println();
 				NotRepeated.add(new UniqueNumber(randomNumber));
 				System.out.println((i + 1)+ ". " + QuizQuestions.get(randomNumber).getQuestion());
 				String answer = in.nextLine();
@@ -54,13 +57,11 @@ public class Main
 				{
 					questionsRight = questionsRight + 1;
 				}
-						
-				System.out.println();
+				QuizQuestions.remove(randomNumber);
 			}
 				 
 			else
 			{
-				randomNumber = (int) (Math.random()*numberOfQuestions) + 1;
 				i = i - 1;
 			}
 		}		
@@ -69,9 +70,24 @@ public class Main
 	
 	public static void score()
 	{
+		Scanner quizAgain = new Scanner(System.in);
 		System.out.println("_____________________________________________________________________________");
 		double percentage = (100 / numberOfQuestions) * questionsRight;
 		
 		System.out.println("You got " + questionsRight + " right out of " + numberOfQuestions + ": " + percentage + "%");
+		System.out.println("Would you like to be quized again?");
+		String yeaOrnea = quizAgain.nextLine();
+		
+		if (yeaOrnea.equals("yes"))
+		{
+			quiz();
+		}
+		
+		else
+		{
+			System.out.println("Okay! Thank you for using a student's project to help you study for a test!");
+		}
+			
+		quiz();
 	}
 }
