@@ -37,6 +37,7 @@ public class Main
 	
 	public static void quiz()
 	{
+		System.out.println("_____________________________________________________________________________");
 		questionsRight = 0;
 		for (int i = 0; i < numberOfQuestions; i++)
 		{
@@ -68,6 +69,7 @@ public class Main
 	
 	public static void score()
 	{
+		System.out.println("_____________________________________________________________________________");
 		double percentage = (100 / numberOfQuestions) * questionsRight;
 		
 		System.out.println("You got " + questionsRight + " right out of " + numberOfQuestions + ": " + percentage + "%");
