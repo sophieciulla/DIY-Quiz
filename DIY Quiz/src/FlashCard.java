@@ -1,10 +1,10 @@
 
-public class Quiz
+public class FlashCard
 {
 	String question;
 	String answer;
 	
-	public Quiz(String ques, String ans)
+	public FlashCard(String ques, String ans)
 	{
 		question = ques;
 		answer = ans;
