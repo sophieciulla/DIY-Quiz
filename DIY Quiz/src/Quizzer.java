@@ -40,6 +40,7 @@ public class Quizzer
 			System.out.println("_____________________________________________________________________________");
 			System.out.println();
 		}		
+		//test1
 		score();
 	}
 	
