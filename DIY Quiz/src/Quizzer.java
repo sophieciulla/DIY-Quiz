@@ -41,6 +41,7 @@ public class Quizzer
 			System.out.println();
 		}		
 		//test1
+		//hi
 		score();
 	}
 	
